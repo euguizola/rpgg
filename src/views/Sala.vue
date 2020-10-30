@@ -10,15 +10,18 @@
         :key="dadosJogador.id"
       />
     </div>
+    <el-button @click="rolarDado">Rolar Dado</el-button>
+    <dado :resultado="valorDado" />
   </div>
 </template>
 
 <script>
 import Jogador from "../components/Jogador";
+import Dado from "../components/Dado";
 
 export default {
   name: "Sala",
-  components: { Jogador },
+  components: { Jogador, Dado },
   props: [],
   beforeMount() {
     this.sala.codigoDaSala = this.$route.params.codigo;
@@ -30,6 +33,7 @@ export default {
   },
   data() {
     return {
+      valorDado: 1,
       jogador: {
         id: "",
       },
@@ -65,7 +69,14 @@ export default {
       },
     };
   },
-  methods: {},
+  methods: {
+    randomNumber(low, high) {
+      return Math.floor(Math.random() * (1 + high - low)) + low;
+    },
+    rolarDado() {
+      this.valorDado = this.randomNumber(1, 20);
+    },
+  },
 };
 </script>
 
