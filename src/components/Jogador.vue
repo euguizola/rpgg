@@ -22,13 +22,16 @@
         :percentage="porcentagemEnergia"
       ></el-progress>
     </div>
+    <dados-jogador :open="true" :jogador="jogador" />
   </div>
 </template>
 
 <script>
+import DadosJogador from "./DadosJogador";
 export default {
   name: "Jogador",
   props: ["jogador"],
+  components: { DadosJogador },
   computed: {
     porcentagemEnergia() {
       return (this.jogador.energia.valor * 100) / this.jogador.energia.maximo;

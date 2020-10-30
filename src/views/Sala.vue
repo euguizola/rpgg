@@ -25,10 +25,10 @@ export default {
   props: [],
   beforeMount() {
     this.sala.codigoDaSala = this.$route.params.codigo;
-    this.sala.idMestre = btoa(codigoSala + "rpggmestre");
+    this.sala.idMestre = btoa(this.sala.codigoDaSala + "rpggmestre");
     var tokenJogador = window.localStorage.getItem("token");
     if (tokenJogador) {
-      this.jogador.id = token;
+      this.jogador.id = tokenJogador;
     }
   },
   data() {
@@ -40,6 +40,7 @@ export default {
       sala: {
         codigoDaSala: "",
         idMestre: "",
+        maximoDePontosDeHabilidade: 10,
         jogadores: [
           {
             id: "XYZ",
@@ -50,8 +51,28 @@ export default {
               valor: 40,
               maximo: 100,
             },
+            metadados: [
+              {
+                nome: "Raça",
+                valor: "Vampiro",
+              },
+            ],
             foto:
               "https://www.nationalgeographic.com/content/dam/animals/thumbs/rights-exempt/mammals/g/gray-wolf_thumb.JPG",
+            habilidades: [
+              {
+                nome: "Força",
+                valor: 5,
+              },
+              {
+                nome: "Carisma",
+                valor: 1,
+              },
+              {
+                nome: "Espionagem",
+                valor: 10,
+              },
+            ],
           },
           {
             id: "XYZ1",
@@ -62,8 +83,32 @@ export default {
               valor: 100,
               maximo: 100,
             },
+            metadados: [
+              {
+                nome: "Raça",
+                valor: "Vampiro",
+              },
+              {
+                nome: "Tipo",
+                valor: "Caçador",
+              },
+            ],
             foto:
               "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-190621-air-fryer-bacon-0035-landscape-pf-1567632709.jpg",
+            habilidades: [
+              {
+                nome: "Força",
+                valor: 5,
+              },
+              {
+                nome: "Carisma",
+                valor: 1,
+              },
+              {
+                nome: "Espionagem",
+                valor: 10,
+              },
+            ],
           },
         ],
       },
